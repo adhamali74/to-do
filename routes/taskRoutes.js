@@ -23,4 +23,25 @@ router.post("/tasks", async (req, res) => {
   }
 });
 
+router.put("/tasks/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const dataToUpdated = req.body;
+    const task = await Task.findByIdAndUpdate(id, dataToUpdated, { new: true });
+    res.status(200).json({ message: "updated data successfully!!", task });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+router.delete("/tasks/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+     await Task.findByIdAndDelete(id);
+    res.status(200).json({ message: "Task Deleted successfully!!" });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 module.exports = router;
