@@ -9,7 +9,7 @@ npm install
 ```
 
 # Run Locally
-To start the local server on localhost:3000 then run the command
+To start the local server on localhost:5000 then run the command
 ```
 npm run start
 ```
